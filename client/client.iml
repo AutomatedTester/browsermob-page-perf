@@ -18,8 +18,10 @@
     <orderEntry type="library" exported="" name="Maven: org.seleniumhq.selenium2:selenium2-java:2.0a3-r8673" level="project" />
     <orderEntry type="library" exported="" name="Maven: org.json:json:20090211" level="project" />
     <orderEntry type="library" exported="" name="Maven: com.google.collections:google-collections:1.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.8.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="Maven: junit:junit:4.8.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-all:1.8.0" level="project" />
+    <orderEntry type="library" exported="" name="WebDriver" level="application" />
+    <orderEntry type="library" exported="" name="Google Collect" level="application" />
   </component>
 </module>
 

@@ -57,6 +57,13 @@ public class HarServlet extends HttpServlet {
             return;
         }
 
+        String pageId = "";
+        pageId = req.getParameter("pageId");
+        if (pageId == null){
+           pageId = "";
+        }
+
+
         try {
 
             ObjectMapper mapper = new ObjectMapper();

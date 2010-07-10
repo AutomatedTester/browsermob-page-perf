@@ -20,10 +20,10 @@ public class Reporter {
     private static final Log LOG = new Log();
 
     public static void main(String[] args) {
-        process("foo", "http://localhost:8080", new File("client/test-data"));
+        process("foo","","http://localhost:8080", new File("client/test-data"));
     }
 
-    static void process(String testId, String server, File dir) {
+    static void process(String testId, String pageId,String server, File dir) {
 
         // get all .har files
         File[] files = dir.listFiles(new FilenameFilter() {
@@ -49,7 +49,9 @@ public class Reporter {
             LOG.info("Processing %s", file);
             
             HttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost(server + "/har?testId=" + testId + "&sessionId=" + sessionId);
+            HttpPost post = new HttpPost(server + "/har?testId=" + testId +
+                    "&sessionId=" + sessionId +
+                    "&pageId=" + pageId);
             post.setEntity(new FileEntity(file, "text/json"));
 
             try {

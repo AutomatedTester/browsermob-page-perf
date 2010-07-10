@@ -46,6 +46,10 @@ public class PagePerfFirefoxDriver extends FirefoxDriver {
         return profile;
     }
 
+    public void process(String pageId){
+        Reporter.process(testId, pageId, pagePerfServer, getLogDir());
+    }
+
     @Override
     public void close() {
         // go to example.com to force the page unload
@@ -61,7 +65,12 @@ public class PagePerfFirefoxDriver extends FirefoxDriver {
         // go ahead and close it
         super.close();
 
+        File logDir = getLogDir();
+        Reporter.process(testId,"", pagePerfServer, logDir);
+    }
+
+    private File getLogDir() {
         File logDir = new File(profile.getProfileDir(), "firebug/netexport/logs");
-        Reporter.process(testId, pagePerfServer, logDir);
+        return logDir;
     }
 }
