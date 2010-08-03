@@ -6,6 +6,7 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Dictionary;
 
 public class PagePerfFirefoxDriver extends FirefoxDriver {
     private String testId;
@@ -48,6 +49,13 @@ public class PagePerfFirefoxDriver extends FirefoxDriver {
 
     public void process(String pageId){
         Reporter.process(testId, pageId, pagePerfServer, getLogDir());
+    }
+
+    public Dictionary<String,Object> webTimingsForPage(){
+        Dictionary<String,Object> webTiming = (Dictionary<String, Object>) executeScript("var performance = window.performance || window.webkitPerformance || window.mozPerformance || window.msPerformance || {};"
+                                + "var timings = performance.timing || {};"
+                                + "return timings;");
+        return webTiming;
     }
 
     @Override
